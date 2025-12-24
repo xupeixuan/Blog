@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="f2dMv_uonBUibTYgGBC3bruBCWCXc4DHAqZ5NxUfhKU">
+  <meta name="msvalidate.01" content="og7GumtAYd">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.infox.ren","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="关于 k8s 的概念和常用的命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubernetes 概念初识">
+<meta property="og:url" content="https://blog.infox.ren/2020/03/14/kubernetes-concepts/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于 k8s 的概念和常用的命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-14T11:40:00.000Z">
+<meta property="article:modified_time" content="2025-12-24T11:58:26.551Z">
+<meta property="article:author" content="宣纸">
+<meta property="article:tag" content="work">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.infox.ren/2020/03/14/kubernetes-concepts/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.infox.ren/2020/03/14/kubernetes-concepts/","path":"2020/03/14/kubernetes-concepts/","title":"kubernetes 概念初识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>kubernetes 概念初识 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">看。  那海中的星辰</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="宣纸"
+      src="/images/user_avatar.jpg">
+  <p class="site-author-name" itemprop="name">宣纸</p>
+  <div class="site-description" itemprop="description">工程实践的一些个人积累</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.infox.ren/2020/03/14/kubernetes-concepts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/user_avatar.jpg">
+      <meta itemprop="name" content="宣纸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="工程实践的一些个人积累">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="kubernetes 概念初识 | Hexo">
+      <meta itemprop="description" content="关于 k8s 的概念和常用的命令">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kubernetes 概念初识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-14 19:40:00" itemprop="dateCreated datePublished" datetime="2020-03-14T19:40:00+08:00">2020-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-24 19:58:26" itemprop="dateModified" datetime="2025-12-24T19:58:26+08:00">2025-12-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cloud/" itemprop="url" rel="index"><span itemprop="name">cloud</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">关于 k8s 的概念和常用的命令</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>快速索引命令行，对k8s的概念的快速了解</p>
+<hr>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
+<li>Master: 集群控制节点，其中的资源存储在etcd中<ul>
+<li>kube-apiserver: CRUD 所有资源的唯一入口</li>
+<li>kube-controller-manager: 资源的自动化控制中心</li>
+<li>kube-scheduler: 负责资源调度的进程</li>
+</ul>
+</li>
+<li>Node: 工作负载节点<ul>
+<li>kubelet: 负责 Pod 对应的容器的创建，启停，实现集群管理的基本功能</li>
+<li>kube-proxy: 实现 Kubernetes Service 的通信与负载均衡机制的重要组件</li>
+<li>Docker Engine: 负责本机的容器管理工作</li>
+</ul>
+</li>
+<li>Pod: 基本的业务单元，每个Pod中都有一个特殊的“根容器”- Pause 容器。 1. 通过 Pause 容器代表整个 Pod 的状态。2. 多个业务容器共享 Pause 容器的 IP 和 Volume，简化业务容器间的通讯和文件共享。 静态 Pod存在于某个具体 Node 的文件中；普通 Pod存储于etcd中，由 Master 进行调度。<ul>
+<li>Endpoint: Pod IP + 容器 Port 的形式存在， 1个 Pod 存在0到多个。</li>
+<li>资源配额限制: Requests 是最小申请量， Limis 是最大允许使用量，尝试超出则进行重启。<ul>
+<li>CPU: 100~300m 等价于 0.1 ~ 0.3 个 CPU。绝对值配额。</li>
+<li>Memory: 单位是内存字节数。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Label: key&#x3D;value 的键值对，可以附加于各种资源对象上，实现分组管理功能。查询筛选需要使用 Label Selector 表达式来实现对象查询。</li>
+<li>Selector: matchLabels 和 matchExpressions 同时设置时条件为 AND，则需要两者同时满足才能命中。<ul>
+<li>matchLabels: 匹配定义的一组 label</li>
+<li>matchExpressions: 基于集合的筛选条件</li>
+</ul>
+</li>
+<li>Replication Controller: 简称 RC，定义期望的场景。 注意：删除 RC 不会影响已经创建的Pod，可以设置 replicas&#x3D;0 来删除 Pod。也可以使用 stop 和 delete 命令一次性删除 RC 和其控制的所有 Pod。 <em>Rolling Update 是每停止一个旧的Pod，同时创建一个新的 Pod的形式进行替换升级。</em> <code>下一代的RC: Replica Set，区别是可以支持集合的 Label Selector。</code><ul>
+<li>Pod 期望的副本数量</li>
+<li>用于筛选目标 Pod 的 Label Selector</li>
+<li>创建新的 Pod 的 Pod 模版</li>
+</ul>
+</li>
+<li>Deployment: 使用 Replica Set 来实现，可以认为是 RC 的一次升级。</li>
+<li>HorizontalPodAutoscaler:</li>
+<li>StatefulSet:</li>
+<li>Service: 指代微服务架构中的一个微服务。</li>
+<li>Job:</li>
+<li>Volume:<ul>
+<li>emptyDir: 生命周期和pod的生命周期相同，用于临时空间</li>
+<li>hostPath: 为Pod挂载宿主机的文件或目录，注意k8s无法管理宿主机的资源</li>
+<li>gcePersistentDisk: google 的永久磁盘</li>
+<li>awsElasticBlockStore:</li>
+<li>nfs:</li>
+</ul>
+</li>
+<li>Persistent Volume:</li>
+<li>Namespace:</li>
+<li>Annotation:</li>
+<li>ConfigMap: 配置集中化</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 常用命令</span></span><br><span class="line">docker ps</span><br><span class="line">docker inspect</span><br><span class="line">docker rmi -f $(docker images -qa)</span><br><span class="line"></span><br><span class="line"><span class="comment"># trouble shooting</span></span><br><span class="line"><span class="comment"># 查看系统 event </span></span><br><span class="line">kubectl get pods</span><br><span class="line"><span class="comment"># 查看容器日志</span></span><br><span class="line">kubectl logs &lt;pod-name&gt; [-c &lt;container-name&gt;]</span><br><span class="line"><span class="comment"># 查看 k8s 服务日志</span></span><br><span class="line">systemctl status kube-controller-manager -l</span><br><span class="line"><span class="comment"># 复制pod上的文件到本地</span></span><br><span class="line">kubectl <span class="built_in">cp</span> &lt;pod-name&gt;:&lt;path&gt; &lt;local-path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装插件  &lt;插件库: https://github.com/kubernetes/sample-cli-plugin &gt;</span></span><br><span class="line"><span class="comment"># 新建可执行文件，以 kubectl-&lt;name&gt; 开头，拷贝到可执行文件PATH中,即可以通过</span></span><br><span class="line">kubectl &lt;name&gt;</span><br><span class="line"><span class="comment"># 查看安装的插件</span></span><br><span class="line">kubectl plugin list</span><br><span class="line"></span><br><span class="line"><span class="comment"># Node 操作</span></span><br><span class="line">kubectl get nodes</span><br><span class="line">kubectl describe node &lt;node-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pod 操作</span></span><br><span class="line">kubectl get pods</span><br><span class="line">kubectl describe pod &lt;pod-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># RC 操作</span></span><br><span class="line">kubectl create -f mysql-rc.yaml</span><br><span class="line">kubectl get rc</span><br><span class="line">kubectl scale rc &lt;rc-name&gt; --replicas=4 <span class="comment">#动态扩容</span></span><br><span class="line"><span class="comment"># Deployment 操作类似于RC</span></span><br><span class="line">kubectl get rs <span class="comment"># replica set</span></span><br><span class="line">kubectl get deployments</span><br><span class="line"></span><br><span class="line"><span class="comment"># Service 操作</span></span><br><span class="line">kubectl create -f mysql-svc.yaml</span><br><span class="line">kubectl get svc</span><br><span class="line">kubectl get endpoints</span><br><span class="line">kubectl get svc &lt;service-name&gt; -o yaml <span class="comment"># 查看 Cluster IP</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/work/" rel="tag"># work</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/12/raspi-setup/" rel="prev" title="树莓派配置">
+                  <i class="fa fa-angle-left"></i> 树莓派配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/04/linux-sys/" rel="next" title="linux 常用命令">
+                  linux 常用命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备19001669号 </a>
+      <img src="/images/beian.png" alt="">
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">宣纸</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"xupeixuan","repo":"Blog","client_id":"f952e4c90454a22c1ff5","client_secret":"4f0e132f8512a36d7b3b286f949fc64e16d516ed","admin_user":"xupeixuan","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"65ff9e49713a440996c69fe03183f4ef"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

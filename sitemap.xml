@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://blog.infox.ren/tags/index.html</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2019/04/19/sql/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2019/10/24/ssh-guide/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2022/07/23/wireguard-guide-md/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/about/index.html</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/archives/index.html</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/categories/index.html</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2024/03/14/debian-setup/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2023/03/21/git-tools/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2020/03/14/kubernetes-concepts/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2021/07/04/linux-sys/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2019/11/12/raspi-setup/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.infox.ren/2019/04/19/mac-os-setup/</loc>
+    
+    <lastmod>2025-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://blog.infox.ren/</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+
+  
+</urlset>

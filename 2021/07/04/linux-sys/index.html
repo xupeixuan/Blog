@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="f2dMv_uonBUibTYgGBC3bruBCWCXc4DHAqZ5NxUfhKU">
+  <meta name="msvalidate.01" content="og7GumtAYd">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.infox.ren","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="linux 系统下常用命令速记 [debian 系统]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 常用命令">
+<meta property="og:url" content="https://blog.infox.ren/2021/07/04/linux-sys/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="linux 系统下常用命令速记 [debian 系统]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.infox.ren/images/linux-sys/linux_performance_tools.PNG">
+<meta property="article:published_time" content="2021-07-04T08:30:00.000Z">
+<meta property="article:modified_time" content="2025-12-24T11:58:26.551Z">
+<meta property="article:author" content="宣纸">
+<meta property="article:tag" content="work">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.infox.ren/images/linux-sys/linux_performance_tools.PNG">
+
+
+<link rel="canonical" href="https://blog.infox.ren/2021/07/04/linux-sys/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.infox.ren/2021/07/04/linux-sys/","path":"2021/07/04/linux-sys/","title":"linux 常用命令"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>linux 常用命令 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">看。  那海中的星辰</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">基础命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E5%86%85%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">针对内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9-CPU"><span class="nav-number">3.</span> <span class="nav-text">针对 CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E7%A3%81%E7%9B%98IO%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">监控磁盘IO的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E5%8F%8A%E7%9B%91%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">查看网络及监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">高级工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gdisk"><span class="nav-number">7.</span> <span class="nav-text">gdisk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#smartctl"><span class="nav-number">8.</span> <span class="nav-text">smartctl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">9.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E9%80%9F%E6%B5%8B%E8%AF%95"><span class="nav-number">9.1.</span> <span class="nav-text">网速测试</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="宣纸"
+      src="/images/user_avatar.jpg">
+  <p class="site-author-name" itemprop="name">宣纸</p>
+  <div class="site-description" itemprop="description">工程实践的一些个人积累</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.infox.ren/2021/07/04/linux-sys/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/user_avatar.jpg">
+      <meta itemprop="name" content="宣纸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="工程实践的一些个人积累">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="linux 常用命令 | Hexo">
+      <meta itemprop="description" content="linux 系统下常用命令速记 [debian 系统]">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux 常用命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-04 16:30:00" itemprop="dateCreated datePublished" datetime="2021-07-04T16:30:00+08:00">2021-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-24 19:58:26" itemprop="dateModified" datetime="2025-12-24T19:58:26+08:00">2025-12-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/os/" itemprop="url" rel="index"><span itemprop="name">os</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">linux 系统下常用命令速记 [debian 系统]</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><ul>
+<li><p>grep 文本内容查找命令</p>
+</li>
+<li><p>find 查找文件所在位置</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name FILE_NAME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uptime 查看机器启动时间，登陆用户，平均负载等情况 [平均负载指特定时间内队列中运行的平均进程数，一般每个CPU内核对应的活动进程数不大于3个，认为系统运行正常]</p>
+</li>
+<li><p>lsof 列出系统当前打开的文件句柄</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -p &lt;pid&gt;  <span class="comment"># 查看进程打开的句柄</span></span><br><span class="line">lsof -i:8080  <span class="comment"># 查看某个端口的使用方式</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ulimit linux系统对每一个登陆的用户都限制其最大进程数和打开的最大文件句柄数，可以根据硬件资源进行自定义设置</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -a <span class="comment"># 显示当前系统对用户使用资源的限制</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>curl HTTP调用工具</p>
+</li>
+<li><p>scp 文件传输命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp user@ip:path <span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dos2unix, unix2dos 常用的win和unix的换行符转换工具</p>
+</li>
+<li><p>ps 显示系统内的所有进程</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -elf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>top 实时查看活动进程的 CPU 和内存信息</p>
+</li>
+<li><p>pidstat 监控全部或指定进程占用系统资源的情况，包括 CPU， 内存， 磁盘 I&#x2F;O， 线程切换，线程数等情况</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pidstat -u -p 2002 <span class="comment"># CPU情况</span></span><br><span class="line">pidstat -r -p 2962 <span class="comment"># 内存情况</span></span><br><span class="line">pidstat -d -p 2002 <span class="comment"># 磁盘情况</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="针对内存"><a href="#针对内存" class="headerlink" title="针对内存"></a>针对内存</h2><ul>
+<li>free 显示系统的内存使用情况</li>
+<li>pmap 报告进程中各个模块占用内存的具体情况，用于定位深层次的内存问题</li>
+</ul>
+<h2 id="针对-CPU"><a href="#针对-CPU" class="headerlink" title="针对 CPU"></a>针对 CPU</h2><ul>
+<li><p>vmstat 显示关于内核进程，虚拟内存，磁盘IO，陷阱和CPU占用率的统计信息</p>
+<ul>
+<li>buff 是 IO 系统存储的磁盘块文件的元数据的统计信息</li>
+<li>cache 是操作系统用来缓存磁盘数据的缓冲区，操作系统会自动调节这个参数保障进程可用</li>
+<li>cs 表示线程环境的切换次数，此数据过大时说明线程的同步机制有问题</li>
+<li>si和so较大时，说明系统在频繁使用交换区，应该查看系统内存是否够用</li>
+<li>bi和bo表示IO活动，根据其大小可知道磁盘IO的负载情况</li>
+</ul>
+</li>
+<li><p>mpstat 实时监控系统CPU的统计信息</p>
+</li>
+</ul>
+<h2 id="监控磁盘IO的命令"><a href="#监控磁盘IO的命令" class="headerlink" title="监控磁盘IO的命令"></a>监控磁盘IO的命令</h2><ul>
+<li><p>iostat 监控CPU占用率，平均负载值及IO读写速度等</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iostat -x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>swapon 查看交换分区的使用情况</p>
+</li>
+<li><p>df 查看文件系统的硬盘挂载点和空间使用情况</p>
+</li>
+</ul>
+<h2 id="查看网络及监控"><a href="#查看网络及监控" class="headerlink" title="查看网络及监控"></a>查看网络及监控</h2><ul>
+<li><p>ifconfig 显示挂载的网卡情况</p>
+</li>
+<li><p>ping 检测网络故障</p>
+</li>
+<li><p>telnet 远程登陆服务的标准协议</p>
+</li>
+<li><p>nc 网络模拟调试工具</p>
+</li>
+<li><p>mtr 网络连通性测试</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtr -r baidu.com <span class="comment"># 检测丢包率</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nslookup 检测网络中的dns服务器是否能正确解析域名</p>
+</li>
+<li><p>traceroute 提供从用户机到服务机的路径</p>
+</li>
+<li><p>sar 可以输出每秒的网卡存取速度，适合线上排查问题时使用</p>
+</li>
+<li><p>netstat 显示网络连接，端口信息等</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -elf | grep 进程  <span class="comment"># 根据进程名查找进程ID</span></span><br><span class="line">netstat -nap | grep 2002  <span class="comment"># 根据进程 ID 或端口查找进程开启的端口</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iptraf 实时监控网络流量的交互式的界面</p>
+</li>
+<li><p>tcpdump 网络状况分析和跟踪的工具，可以用来抓包</p>
+</li>
+<li><p>nmap 扫描机器打开的端口和端口提供的服务信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -v -A localhost</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="高级工具"><a href="#高级工具" class="headerlink" title="高级工具"></a>高级工具</h2><ul>
+<li><p>pstack 显示每个进程的本地调用栈</p>
+</li>
+<li><p>strace 监控应用所使用的系统调用</p>
+</li>
+<li><p>&#x2F;proc 信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/cpuinfo   <span class="comment"># cpu信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/meminfo   <span class="comment"># 内存信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/zoneinfo  <span class="comment"># 详细的内存映射信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/mounts    <span class="comment"># 磁盘映射信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/loadavg   <span class="comment"># 平均负载均衡</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>摘要信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md5sum</span> file</span><br><span class="line"><span class="built_in">sha256sum</span> file</span><br><span class="line"><span class="built_in">base64</span> file</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="gdisk"><a href="#gdisk" class="headerlink" title="gdisk"></a>gdisk</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gdisk /dev/sda</span><br><span class="line">b</span><br><span class="line">v</span><br><span class="line">b</span><br><span class="line">w</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
+
+<h2 id="smartctl"><a href="#smartctl" class="headerlink" title="smartctl"></a>smartctl</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install smartmontools</span><br><span class="line"><span class="comment">### 查看是否支持</span></span><br><span class="line">smartctl -i /dev/sda</span><br><span class="line"><span class="comment">### 查看健康情况</span></span><br><span class="line">smartctl -H /dev/sda</span><br><span class="line"><span class="comment">## 查看详细情况</span></span><br><span class="line">smartctl -A /dev/sda</span><br></pre></td></tr></table></figure>
+
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><h3 id="网速测试"><a href="#网速测试" class="headerlink" title="网速测试"></a>网速测试</h3><ul>
+<li><p>iperf3 工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># host 命令</span></span><br><span class="line">iperf3 -s</span><br><span class="line"><span class="comment"># client 命令</span></span><br><span class="line">iperf3 -c &lt;ip&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="/../images/linux-sys/linux_performance_tools.PNG" alt="linux performace tools"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/work/" rel="tag"># work</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/03/14/kubernetes-concepts/" rel="prev" title="kubernetes 概念初识">
+                  <i class="fa fa-angle-left"></i> kubernetes 概念初识
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/23/wireguard-guide-md/" rel="next" title="WireGuard 配置">
+                  WireGuard 配置 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备19001669号 </a>
+      <img src="/images/beian.png" alt="">
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">宣纸</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"xupeixuan","repo":"Blog","client_id":"f952e4c90454a22c1ff5","client_secret":"4f0e132f8512a36d7b3b286f949fc64e16d516ed","admin_user":"xupeixuan","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"aac5196c47d830e786f2d263eb928c72"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
